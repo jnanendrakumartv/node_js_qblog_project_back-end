@@ -1,18 +1,27 @@
-import express from 'express'
-import routes from './api/routes/userRouter'
-import mongoose from 'mongoose'
-import bodyParser from 'body-parser'
-const app = express()
-const PORT = 8004
- 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/register_form')
- 
-app.use(bodyParser.urlencoded({ extended: true }))
+var express = require('express')
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+
+var app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
- 
-routes(app)
- 
-app.listen(PORT, () => {
-    console.log(`you are server is running on ${PORT}`);
-})
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/Users');
+
+UserData = require('./api/models/UserModel'); 
+
+
+var routes = require('./api/routes/UserRoutes'); 
+routes(app);
+
+
+app.set('port', (process.env.PORT || 8000));
+app.listen(app.get('port'), function(){
+	console.log('Server started on port ' + app.get('port'));
+});

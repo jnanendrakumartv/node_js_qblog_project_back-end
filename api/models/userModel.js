@@ -1,41 +1,31 @@
-import mongoose from 'mongoose'
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
- 
-const Schema = mongoose.Schema
-const DownloadSchema = new Schema({
-    Firstname: {
-        type: String,
-        required: 'Firstname is required'
-    },
-    
-    Lastname: {
-        type: String,
-        required: 'Lastname is required'
-    },
-    Email: {
-        type: String,
-        unique: true,        
-        required: 'Email is required',
-        // match:/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,4}$/,
-    },
-    
-    Password: {
-        type: String,
-        required: 'Password is required',
-    },
-    ConfirmPassword: {
-        type: String,
-        required: 'Password does not match',
+var UserSchema = new Schema({
+  firstname: {
+    type: String,
+    required: 'Please Enter the firstname'
+  },
+  lastname: {
+    type: String,
+    required: 'Please Enter the lastname'
+  },
+  email: {
+    type: String,
+    required: 'Please Enter valid emailId'
+  },
+  password: {
+    type: String,
+    required: 'Please Enter the current password'
+  },
+  confirm_pass: {
+    type: String,
+    required: 'Please Enter confirm password'
+  }, 
+  Created_date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-    },
-    Create_At:{
-        type:Date,
-        default:Date.now
-    },
-    Updated_At:{
-        type:Date,
-        default:Date.now
-    },
-})
- 
-export default DownloadSchema;
+module.exports = mongoose.model('UserInfo', UserSchema);
