@@ -10,7 +10,7 @@ exports.createUser = function(req, res){
   const remail=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
   const rpwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
 if(!rpwd.test(req.body.password)){
-res.send('password is invalid');
+res.send('password should contain !,@,#,$,%,&,*, Charecter and numbers');
 }
 if(remail.test(req.body.email)){
   console.log("welcome");
