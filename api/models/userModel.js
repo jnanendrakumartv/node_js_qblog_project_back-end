@@ -18,14 +18,11 @@ var UserSchema = new Schema({
     type: String,
     required: 'Please Enter the current password'
   },
-  confirm_pass: {
-    type: String,
-    required: 'Please Enter confirm password'
-  }, 
-  Created_date: {
-    type: Date,
-    default: Date.now
-  }
+  // confirm_pass: {
+  //   type: String,
+  //   required: 'Please Enter confirm password'
+  // }, 
+ 
 });
 
 module.exports = mongoose.model('UserInfo', UserSchema);

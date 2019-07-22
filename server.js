@@ -14,14 +14,14 @@ app.use(bodyParser.json());
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Users');
 
-UserData = require('./api/models/UserModel'); 
+UserData = require('./api/models/userModel'); 
 
 
 var routes = require('./api/routes/UserRoutes'); 
 routes(app);
 
 
-app.set('port', (process.env.PORT || 8000));
+app.set('port', (process.env.PORT || 9000));
 app.listen(app.get('port'), function(){
 	console.log('Server started on port ' + app.get('port'));
 });

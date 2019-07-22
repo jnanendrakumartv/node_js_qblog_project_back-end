@@ -1,15 +1,11 @@
 module.exports = function(app) {
 	var userData = require('../controller/UserController');
 
-// User signup 
- app.route('/signup')
- .post(userData.userSignup);
+
 
  // To add or create user
  app.route('/createUser')
  .post(userData.createUser);
-
- 
 
  //to get user detail using email Id
  app.route('/getUser/:emailId')
