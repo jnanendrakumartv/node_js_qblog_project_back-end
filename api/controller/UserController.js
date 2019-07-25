@@ -7,12 +7,12 @@ var fs = require("fs");
 // To create new user
 
 exports.createUser = function(req, res){
-  const remail=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
-  const rpwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
-if(!rpwd.test(req.body.password)){
+  const reg_email=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+  const reg_pwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
+if(!reg_pwd.test(req.body.password)){
 res.send('password is invalid');
 }
-if(remail.test(req.body.email)){
+if(reg_email.test(req.body.email)){
   console.log("welcome");
   console.log(req.body);
   UserData.find({email: req.body.email},function(err, data){
