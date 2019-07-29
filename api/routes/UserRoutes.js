@@ -1,10 +1,10 @@
 module.exports = function(app) {
 	var userData = require('../controller/UserController');
-
+	var authordet=require('../controller/UserController');
 
 
  // To add or create user
- app.route('/createUser')
+ app.route('/signup')
  .post(userData.createUser);
 
  //to get user detail using email Id
@@ -22,5 +22,8 @@ module.exports = function(app) {
  //To sign steps
  app.route('/signin')
  .post(userData.userSignin);
+ app.route('/details')
+ .post(authordet.authorDetails)
  
 };
+ 

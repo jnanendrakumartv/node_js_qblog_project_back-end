@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
+authordet=mongoose.model('details');
 var bcrypt = require('bcryptjs');
 var fs = require("fs");
 
@@ -89,6 +90,17 @@ exports.updateUser = function(req, res) {
         res.send(err);
       res.json(data);
     });
+};
+
+
+exports.authorDetails = function(req,res){
+  console.log(req.body);
+  var adetails = new authordet(req.body);
+  adetails.save(function(err, data){
+    if(err)
+      res.send(err.message);
+     res.json(data);  
+  })  
 };
 
 // exports.deleteUser = function(req, res){
