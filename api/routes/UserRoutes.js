@@ -4,7 +4,7 @@ module.exports = function(app) {
 
 
  // To add or create user
- app.route('/createUser')
+ app.route('/signup')
  .post(userData.createUser);
 
  //to get user detail using email Id
