@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
+authordet=mongoose.model('details');
 var bcrypt = require('bcryptjs');
 var fs = require("fs");
 
@@ -60,7 +61,6 @@ exports.userSignin = function(req,res){
 
 //get all users
 exports.getAllUsers = function(req, res) {
- 
   console.log(req.body);
   UserData.find({}, function(err, data) {
     if (err)
@@ -70,7 +70,6 @@ exports.getAllUsers = function(req, res) {
   });
 };
 exports.getUser = function(req, res){
-
   console.log(req.params.emailId);    
   UserData.find({email: req.params.emailId},
     function(err, data){
@@ -81,7 +80,6 @@ exports.getUser = function(req, res){
     });
 };
 
-
 exports.updateUser = function(req, res) {
   UserData.findOneAndUpdate({_id: req.body.userId}, 
     req.body, {new: true}, function(err, data) {
@@ -90,6 +88,21 @@ exports.updateUser = function(req, res) {
       res.json(data);
     });
 };
+
+
+
+exports.authorDetails = function(req,res){
+  console.log(req.body);
+  var adetails = new authordet(req.body);
+  adetails.save(function(err, data){
+    if(err)
+      res.send(err.message);
+     res.json(data);  
+  })  
+};
+
+
+
 
 // exports.deleteUser = function(req, res){
 //   UserData.remove({

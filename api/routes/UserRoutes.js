@@ -1,6 +1,6 @@
 module.exports = function(app) {
 	var userData = require('../controller/UserController');
-
+	var authordet=require('../controller/UserController');
 
 
  // To add or create user
@@ -22,5 +22,9 @@ module.exports = function(app) {
  //To sign steps
  app.route('/signin')
  .post(userData.userSignin);
+
+
+ app.route('/details')
+ .post(authordet.authorDetails)
  
 };
