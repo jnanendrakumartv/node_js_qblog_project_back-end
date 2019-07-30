@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
-authordet1=mongoose.model('getUser1');
+// authordet1=mongoose.model('getUser1');
 var bcrypt = require('bcryptjs');
 var fs = require("fs");
 
@@ -105,39 +105,38 @@ exports.authorDetails = function(req,res){
 
 
 
-exports.getAllUsers1 = function(req, res) {
-  console.log(req.body);
-  authordet1.find({}, function(err, data) {
-    if (err)
-      res.send(err);
-    res.json(data);
-    console.log(data);
-  });
-};
-
-exports.getUser1 = function(req, res){
-  console.log(req.params.mailId);    
-  authordet1.find({mail: req.params.mailId},
-    function(err, data){
-      if (err)
-        res.send(err);
-      res.json(data);
-      console.log(data);
-    });
-};
-
-
-
-// exports.getDetails= function(req, res) {
+// exports.getAllUsers1 = function(req, res) {
 //   console.log(req.body);
-//   var gettais = new authordet(req.body);
-//   gettais.save(function(err, data){
-//   // authordet.find({}, function(err, data) {
+//   authordet1.find({}, function(err, data) {
 //     if (err)
-//       res.send(err.message);
+//       res.send(err);
 //     res.json(data);
 //     console.log(data);
 //   });
+// };
+
+// exports.getUser1 = function(req, res){
+//   console.log(req.params.mailId);    
+//   authordet1.find({mail: req.params.mailId},
+//     function(err, data){
+//       if (err)
+//         res.send(err);
+//       res.json(data);
+//       console.log(data);
+//     });
+// };
+
+
+
+// // eexports.getUser = function(req, res){
+//   console.log(req.params.emailId);    
+//   UserData.find({email: req.params.emailId},
+//     function(err, data){
+//       if (err)
+//         res.send(err);
+//       res.json(data);
+//       console.log(data);
+//     });
 // };
 
 

@@ -32,17 +32,6 @@ module.exports = function(app) {
  .post(authordet.authorDetails);
 
 
-//  app.route('/getdetails')
-// .get(authordet.getDetails);
 
-
-app.route('/getUser1/:mailId')
- .get(authordet1.getUser1);
-//  app.route('/getdetails/:id')
-// .get(authordet.getdetails);
 
 };
-// app.route('/details')
-// .get(hospitaldet.hospitalDetails)
-// app.route('/assement/:id')
-//         .get(getUser)
