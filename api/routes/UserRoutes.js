@@ -8,6 +8,11 @@ module.exports = function(app) {
  .post(userData.createUser);
 
  //to get user detail using email Id
+//  app.route('/getAllUsers')
+//  .get(userData.getAllUsers);
+
+
+
  app.route('/getUser/:emailId')
  .get(userData.getUser);
 
@@ -23,8 +28,21 @@ module.exports = function(app) {
  app.route('/signin')
  .post(userData.userSignin);
 
-
  app.route('/details')
- .post(authordet.authorDetails)
- 
+ .post(authordet.authorDetails);
+
+
+//  app.route('/getdetails')
+// .get(authordet.getDetails);
+
+
+app.route('/getUser1/:mailId')
+ .get(authordet1.getUser1);
+//  app.route('/getdetails/:id')
+// .get(authordet.getdetails);
+
 };
+// app.route('/details')
+// .get(hospitaldet.hospitalDetails)
+// app.route('/assement/:id')
+//         .get(getUser)

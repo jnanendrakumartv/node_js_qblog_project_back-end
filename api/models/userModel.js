@@ -28,10 +28,13 @@ var UserSchema = new Schema({
 module.exports = mongoose.model('UserInfo', UserSchema);
 
 
-
 var detailSchema =new Schema({
-  author:{ type:String, },
-  books:{ type:String, },
+  author:{ type:String },
+  books:{ type:String },
+  price : { type: Number},
+  edition: { type: String},
+  published:{ type: String},
+  mail:{ type: String },
   
 })
 module.exports = mongoose.model('details', detailSchema);

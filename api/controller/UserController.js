@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
+authordet1=mongoose.model('getUser1');
 var bcrypt = require('bcryptjs');
 var fs = require("fs");
 
@@ -8,12 +9,12 @@ var fs = require("fs");
 // To create new user
 
 exports.createUser = function(req, res){
-  const reg_email=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
-  const reg_pwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
-if(!reg_pwd.test(req.body.password)){
-res.send('password is invalid');
+  const remail=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
+  const rpwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
+if(!rpwd.test(req.body.password)){
+res.send('password should contain !,@,#,$,%,&,*, Charecter and numbers');
 }
-if(reg_email.test(req.body.email)){
+if(remail.test(req.body.email)){
   console.log("welcome");
   console.log(req.body);
   UserData.find({email: req.body.email},function(err, data){
@@ -69,6 +70,7 @@ exports.getAllUsers = function(req, res) {
     console.log(data);
   });
 };
+
 exports.getUser = function(req, res){
   console.log(req.params.emailId);    
   UserData.find({email: req.params.emailId},
@@ -80,6 +82,7 @@ exports.getUser = function(req, res){
     });
 };
 
+
 exports.updateUser = function(req, res) {
   UserData.findOneAndUpdate({_id: req.body.userId}, 
     req.body, {new: true}, function(err, data) {
@@ -88,7 +91,6 @@ exports.updateUser = function(req, res) {
       res.json(data);
     });
 };
-
 
 
 exports.authorDetails = function(req,res){
@@ -103,6 +105,62 @@ exports.authorDetails = function(req,res){
 
 
 
+exports.getAllUsers1 = function(req, res) {
+  console.log(req.body);
+  authordet1.find({}, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
+    console.log(data);
+  });
+};
+
+exports.getUser1 = function(req, res){
+  console.log(req.params.mailId);    
+  authordet1.find({mail: req.params.mailId},
+    function(err, data){
+      if (err)
+        res.send(err);
+      res.json(data);
+      console.log(data);
+    });
+};
+
+
+
+// exports.getDetails= function(req, res) {
+//   console.log(req.body);
+//   var gettais = new authordet(req.body);
+//   gettais.save(function(err, data){
+//   // authordet.find({}, function(err, data) {
+//     if (err)
+//       res.send(err.message);
+//     res.json(data);
+//     console.log(data);
+//   });
+// };
+
+
+
+
+
+// exports.getDetails = (req, res) => {
+//   User.find({}, (error, data) => {
+//       if (error) { res.json(error) }
+//       res.json(data)
+//   })
+  
+// }
+
+// exports.details = function(req, res) {
+//   console.log(req.body);
+//   authordet.find({}, function(err, data) {
+//     if (err)
+//       res.send(err);
+//     res.json(data);
+//     console.log(data);
+//   });
+// };
 
 // exports.deleteUser = function(req, res){
 //   UserData.remove({
@@ -117,3 +175,12 @@ exports.authorDetails = function(req,res){
 // // Delete users
 // app.route('/getAllUsers')
 // .get(userData.getAllUsers);
+
+
+
+// exports.get_Data = (req, res) => {
+//   Download.find({}, (error, downloads) => {
+//       if (error) { res.json(error) }
+//       res.json(downloads)
+//   })
+// }
