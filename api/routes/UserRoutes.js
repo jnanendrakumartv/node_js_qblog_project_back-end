@@ -11,7 +11,8 @@ module.exports = function(app) {
 //  app.route('/getAllUsers')
 //  .get(userData.getAllUsers);
 
-
+app.route('/getAllUsers')
+.get(userData.getAllUsers);
 
  app.route('/getUser/:emailId')
  .get(userData.getUser);
@@ -20,18 +21,23 @@ module.exports = function(app) {
  app.route('/updateUser')
  .put(userData.updateUser);
 
-//  //To delete user data by using userId
-//  app.route('/deleteUser/:userId')
-//  .delete(userData.deleteUser);
+
 
  //To sign steps
  app.route('/signin')
  .post(userData.userSignin);
 
+
+
  app.route('/details')
- .post(authordet.authorDetails);
+ .post(authordet.authorDetails)
+ 
 
+ 
+// app.route('/getAllUserss')
+// get(authordet.getAllUserss);
 
-
+app.route('/getUsers/:mailId')
+.get(authordet.getUsers);
 
 };

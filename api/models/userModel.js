@@ -34,7 +34,7 @@ var detailSchema =new Schema({
   price : { type: Number},
   edition: { type: String},
   published:{ type: String},
-  mail:{ type: String },
+  email:{ type: String },
   
 })
 module.exports = mongoose.model('details', detailSchema);

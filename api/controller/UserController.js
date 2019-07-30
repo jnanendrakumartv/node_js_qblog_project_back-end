@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
-// authordet1=mongoose.model('getUser1');
+// authordet=mongoose.model('deatils');
 var bcrypt = require('bcryptjs');
 var fs = require("fs");
 
@@ -105,81 +105,24 @@ exports.authorDetails = function(req,res){
 
 
 
-// exports.getAllUsers1 = function(req, res) {
-//   console.log(req.body);
-//   authordet1.find({}, function(err, data) {
-//     if (err)
-//       res.send(err);
-//     res.json(data);
-//     console.log(data);
-//   });
-// };
+exports.getAllUserss = function(req, res) {
+  debugger
+  console.log(req.body);
+  authordet.find({}, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
+    console.log(data);
+  });
+};
 
-// exports.getUser1 = function(req, res){
-//   console.log(req.params.mailId);    
-//   authordet1.find({mail: req.params.mailId},
-//     function(err, data){
-//       if (err)
-//         res.send(err);
-//       res.json(data);
-//       console.log(data);
-//     });
-// };
-
-
-
-// // eexports.getUser = function(req, res){
-//   console.log(req.params.emailId);    
-//   UserData.find({email: req.params.emailId},
-//     function(err, data){
-//       if (err)
-//         res.send(err);
-//       res.json(data);
-//       console.log(data);
-//     });
-// };
-
-
-
-
-
-// exports.getDetails = (req, res) => {
-//   User.find({}, (error, data) => {
-//       if (error) { res.json(error) }
-//       res.json(data)
-//   })
-  
-// }
-
-// exports.details = function(req, res) {
-//   console.log(req.body);
-//   authordet.find({}, function(err, data) {
-//     if (err)
-//       res.send(err);
-//     res.json(data);
-//     console.log(data);
-//   });
-// };
-
-// exports.deleteUser = function(req, res){
-//   UserData.remove({
-//     _id: req.params.userId
-//   }, function(err, data) {
-//     if (err)
-//       res.send(err);
-//     res.json({ message: 'user successfully deleted' });
-//   })
-// };
-
-// // Delete users
-// app.route('/getAllUsers')
-// .get(userData.getAllUsers);
-
-
-
-// exports.get_Data = (req, res) => {
-//   Download.find({}, (error, downloads) => {
-//       if (error) { res.json(error) }
-//       res.json(downloads)
-//   })
-// }
+exports.getUsers = function(req, res){
+  console.log(req.params.emailId);    
+  authordet.find({email: req.params.emailId},
+    function(err, data){
+      if (err)
+        res.send(err);
+      res.json(data);
+      console.log(data);
+    });
+};
