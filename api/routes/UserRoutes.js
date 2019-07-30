@@ -28,15 +28,16 @@ app.route('/getAllUsers')
  .post(userData.userSignin);
 
 
-
+// Insert author and books details
  app.route('/details')
  .post(authordet.authorDetails)
  
 
  
-// app.route('/getAllUserss')
-// get(authordet.getAllUserss);
+app.route('/getAllUserss')
+get(authordet.getAllUserss);
 
+// to get books details by using email Id
 app.route('/getUsers/:mailId')
 .get(authordet.getUsers);
 

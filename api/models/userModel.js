@@ -28,7 +28,7 @@ var UserSchema = new Schema({
 module.exports = mongoose.model('UserInfo', UserSchema);
 
 
-var detailSchema =new Schema({
+var UserSchema1 =new Schema({
   author:{ type:String },
   books:{ type:String },
   price : { type: Number},
@@ -37,4 +37,4 @@ var detailSchema =new Schema({
   email:{ type: String },
   
 })
-module.exports = mongoose.model('details', detailSchema);
+module.exports = mongoose.model('details', UserSchema1);
