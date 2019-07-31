@@ -35,7 +35,7 @@ app.route('/getAllUsers')
 
  
 app.route('/getAllUserss')
-get(authordet.getAllUserss);
+.get(authordet.getAllUserss);
 
 // to get books details by using email Id
 app.route('/getUsers/:mailId')

@@ -123,6 +123,6 @@ exports.getUsers = function(req, res){
       if (err)
         res.send(err);
       res.json(data);
-      res.json('user created sucessfully');
+      res.send('user data get sucessfully');
     });
 };
