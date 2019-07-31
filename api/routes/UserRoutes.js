@@ -31,14 +31,18 @@ app.route('/getAllUsers')
 // Insert author and books details
  app.route('/details')
  .post(authordet.authorDetails)
+
+ .get(authordet.list_all_tasks)
+ app.route('/details/:taskId')
+ .get(authordet.read_a_task)
  
 
  
-app.route('/getAllUserss')
-.get(authordet.getAllUserss);
+// app.route('/getAllUserss')
+// .get(authordet.getAllUserss);
 
-// to get books details by using email Id
-app.route('/getUsers/:mailId')
-.get(authordet.getUsers);
+// // to get books details by using email Id
+// app.route('/getUsers/:mailId')
+// .get(authordet.getUsers);
 
 };

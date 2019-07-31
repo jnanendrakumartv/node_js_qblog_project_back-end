@@ -8,6 +8,25 @@ var fs = require("fs");
 
 // To create new user
 
+exports.list_all_tasks = function(req, res) {
+  authordet.find({}, function(err, data) {
+  if (err)
+  res.send(err);
+  res.json(data);
+  });
+  };
+  
+  exports.read_a_task = function(req, res) {
+    authordet.findById(req.params.taskId, function(err, task) {
+    if (err)
+    res.send(err);
+    res.json(task);
+    });
+    };
+
+
+
+
 exports.createUser = function(req, res){
   const remail=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
   const rpwd=/^[@#*&_%$!][A-Za-z0-9]{6,13}$/;
@@ -105,24 +124,24 @@ exports.authorDetails = function(req,res){
 
 
 
-exports.getAllUserss = function(req, res) {
-  debugger
-  console.log(req.body);
-  authordet.find({}, function(err, data) {
-    if (err)
-      res.send(err);
-    res.json(data);
-    console.log(data);
-  });
-};
+// exports.getAllUserss = function(req, res) {
+//   debugger
+//   console.log(req.body);
+//   authordet.find({}, function(err, data) {
+//     if (err)
+//       res.send(err);
+//     res.json(data);
+//     console.log(data);
+//   });
+// };
 
-exports.getUsers = function(req, res){
-  console.log(req.params.emailId);    
-  authordet.find({email: req.params.emailId},
-    function(err, data){
-      if (err)
-        res.send(err);
-      res.json(data);
-      res.send('user data get sucessfully');
-    });
-};
+// exports.getUsers = function(req, res){
+//   console.log(req.params.emailId);    
+//   authordet.find({email: req.params.emailId},
+//     function(err, data){
+//       if (err)
+//         res.send(err);
+//       res.json(data);
+//       // res.json('user created sucessfully');
+//     });
+// };
