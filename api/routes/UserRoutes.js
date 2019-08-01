@@ -7,8 +7,7 @@ module.exports = function(app) {
  app.route('/signup')
  .post(userData.createUser);
 
- //to get user detail using email Id
-//  app.route('/getAllUsers')
+
 //  .get(userData.getAllUsers);
 
 app.route('/getAllUsers')
@@ -32,17 +31,9 @@ app.route('/getAllUsers')
  app.route('/details')
  .post(authordet.authorDetails)
 
+ // To get detail by using Id
  .get(authordet.list_all_tasks)
  app.route('/details/:taskId')
  .get(authordet.read_a_task)
- 
-
- 
-// app.route('/getAllUserss')
-// .get(authordet.getAllUserss);
-
-// // to get books details by using email Id
-// app.route('/getUsers/:mailId')
-// .get(authordet.getUsers);
 
 };
