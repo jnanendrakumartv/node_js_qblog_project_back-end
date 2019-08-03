@@ -31,9 +31,9 @@ module.exports = mongoose.model('UserInfo', UserSchema);
 var UserSchema1 =new Schema({
   author:{ type:String },
   books:{ type:String },
-  price : { type: Number},
+  price : { type: String},
   edition: { type: String},
   published:{ type: String},
-  email:{ type: String },  
+  
 })
 module.exports = mongoose.model('details', UserSchema1);
