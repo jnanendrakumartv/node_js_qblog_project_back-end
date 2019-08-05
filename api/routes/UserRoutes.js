@@ -1,18 +1,20 @@
 module.exports = function(app) {
 	var userData = require('../controller/UserController');
 	var authordet=require('../controller/UserController');
+	var isAuth = require('../Middleware/isAuth')
 
 
  // To add or create user
  app.route('/signup')
- .post(userData.createUser);
+ .post(userData.userSignup)
+ .get(userData.getAllUsers)
+
+ app.route('/signin',isAuth)
+ .post(userData.userSignin);
+ 
 
 
 //  .get(userData.getAllUsers);
-
-app.route('/getAllUsers')
-.get(userData.getAllUsers);
-
  app.route('/getUser/:emailId')
  .get(userData.getUser);
 
@@ -22,10 +24,7 @@ app.route('/getAllUsers')
 
 
 
- //To sign steps
- app.route('/signin')
- .post(userData.userSignin);
-
+ 
 
 // Insert author and books details
  app.route('/details')
