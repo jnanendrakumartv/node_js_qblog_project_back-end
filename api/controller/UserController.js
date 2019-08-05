@@ -102,13 +102,6 @@ exports.updateUser = function(req, res) {
 }
 
 
-
-
-
-
-
-
-
 exports.authorDetails = function(req,res){
   console.log(req.body);
   var adetails = new authordet(req.body);
