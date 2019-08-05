@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chiru",
+  "author": "jnane",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
