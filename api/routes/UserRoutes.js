@@ -3,28 +3,22 @@ module.exports = function(app) {
 	var authordet=require('../controller/UserController');
 	var isAuth = require('../Middleware/isAuth')
 
-
- // To add or create user
+ // Signup 
  app.route('/signup')
- .post(userData.userSignup)
- .get(userData.getAllUsers)
+	.post(userData.userSignup)
+	.get(userData.getAllUsers)
 
  app.route('/signin',isAuth)
- .post(userData.userSignin);
- 
-
+	 .post(userData.userSignin)
+	 .get(userData.getAllSignin)
 
 //  .get(userData.getAllUsers);
  app.route('/getUser/:emailId')
- .get(userData.getUser);
+ .get(userData.getUser)
 
  //To update user date 
  app.route('/updateUser')
- .put(userData.updateUser);
-
-
-
- 
+ .put(userData.updateUser)
 
 // Insert author and books details
  app.route('/details')
