@@ -11,6 +11,9 @@ module.exports = function(app) {
  app.route('/signin',isAuth)
 	 .post(userData.userSignin)
 	 .get(userData.getAllSignin)
+	 .get(userData.list_all_tasks)
+	 app.route('/signin/:taskId')
+	 .get(userData.read_a_task1)
 
 //  .get(userData.getAllUsers);
  app.route('/getUser/:emailId')

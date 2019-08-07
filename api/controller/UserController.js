@@ -11,7 +11,6 @@ var fs = require("fs");
 
 //get all users
 exports.getAllUsers = function(req, res) {
- 
   console.log(req.body);
   UserData.find({}, function(err, details) {
     if (err)
@@ -80,6 +79,7 @@ exports.userSignup = function(req, res){
 //     }
 //   });
 // };
+
 exports.userSignin = (req,res,next) =>{
   const email = req.body.email;
   const password = req.body.password;
@@ -127,6 +127,18 @@ exports.getAllSignin = (isAuth,function(req, res) {
   });
 });
 
+
+exports.read_a_task1 = function(req, res) {
+  UserData.findById(req.params.taskId, function(err, task) {
+  if (err)
+  res.send(err);
+  res.json(task);
+  });
+  };
+
+
+
+
 exports.updateUser = function(req, res) {
   UserData.findOneAndUpdate({_id: req.body.userId}, 
     req.body, {new: true}, function(err, data) {
@@ -135,8 +147,6 @@ exports.updateUser = function(req, res) {
       res.json(data);
     })
 }
-
-
 
 
 exports.getUser = function(req, res){
@@ -150,10 +160,6 @@ exports.getUser = function(req, res){
       console.log(data);
     });
 };
-
-
-
-
 
 exports.authorDetails = function(req,res){
   console.log(req.body);
