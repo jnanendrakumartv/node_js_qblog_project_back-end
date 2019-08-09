@@ -24,7 +24,6 @@ var UserSchema = new Schema({
   // }, 
  
 });
-
 module.exports = mongoose.model('UserInfo', UserSchema);
 
 
@@ -33,7 +32,15 @@ var UserSchema1 =new Schema({
   books:{ type:String },
   price : { type: String},
   edition: { type: String},
-  published:{ type: String},
-  
+  comments: { type:String },
+  published:{ type: String}, 
+  build: {type:String},
 })
 module.exports = mongoose.model('details', UserSchema1);
+
+
+// var UserSchema2 =new Schema({
+//   books:{ type:String },
+//   comments: { type:String }, 
+// })
+// module.exports = mongoose.model('details', UserSchema2);
