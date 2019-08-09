@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
-UserData1 = mongoose.model('UserInfo')
 authordet=mongoose.model('details');
 // authordet=mongoose.model('deatils');
 var bcrypt = require('bcryptjs');
@@ -236,31 +235,3 @@ exports.list_all_tasks = function(req, res) {
     res.json(task);
     });
     };
-
-    exports.read_a_task = function(req, res) {
-      authordet.findOneAndUpdate(req.params.taskId, function(err, task) {
-      if (err)
-      res.send(err);
-      res.json(task);
-      });
-      };
-  
-
-    // exports.read_a_task = function(req, res) {
-    //   authordet.findById({_id: req.body.userId}, 
-    //     req.body, {new: true}, function(err, data) {
-    //       if (err)
-    //         res.send(err);
-    //       res.json(data);
-    //     })
-    // }
-
-
-    // book added
-    exports.userSending = function(req, res){
-      console.log('hi')
-      
-      }
-      
-    
-  
