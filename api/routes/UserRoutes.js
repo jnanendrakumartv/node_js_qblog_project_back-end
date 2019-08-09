@@ -32,4 +32,14 @@ module.exports = function(app) {
  app.route('/details/:taskId')
  .get(authordet.read_a_task)
 
+
+// Comments 
+//  app.route('/details')
+//  .post(authordet.bookcomments)
+
+ // To get detail by using Id
+//  .get(authordet.list_all_tasks)
+//  app.route('/details1/:taskId')
+//  .get(authordet.read_a_task)
+
 };

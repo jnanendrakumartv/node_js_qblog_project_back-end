@@ -17,23 +17,21 @@ var UserSchema = new Schema({
   password: {
     type: String,
     required: 'Please Enter the current password'
-  },
-  // confirm_pass: {
-  //   type: String,
-  //   required: 'Please Enter confirm password'
-  // }, 
- 
+  }, 
 });
-
 module.exports = mongoose.model('UserInfo', UserSchema);
 
-
 var UserSchema1 =new Schema({
-  author:{ type:String },
-  books:{ type:String },
-  price : { type: String},
-  edition: { type: String},
-  published:{ type: String},
-  
+    authorname:{ type:String },
+    bookname:{ type:String },
+    price : { type: String},
+    edition: { type: String},
+   
 })
 module.exports = mongoose.model('details', UserSchema1);
+
+
+// var UserSchema2 = new Schema({
+//     comments: { type:String},
+// })
+// module.exports = mongoose.model('details', UserSchema2);
