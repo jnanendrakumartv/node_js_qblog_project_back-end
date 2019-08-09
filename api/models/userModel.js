@@ -32,9 +32,16 @@ var UserSchema1 =new Schema({
   books:{ type:String },
   price : { type: String},
   edition: { type: String},
+<<<<<<< HEAD
   comments: { type:String },
   published:{ type: String}, 
   build: {type:String},
+=======
+  published:{ type: String},
+  comments: { type : String},
+  comments1: { type : String},
+  
+>>>>>>> 8b7f88dccfcb1753f548970844f7c775f64ade6b
 })
 module.exports = mongoose.model('details', UserSchema1);
 
