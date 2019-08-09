@@ -31,5 +31,11 @@ module.exports = function(app) {
  .get(authordet.list_all_tasks)
  app.route('/details/:taskId')
  .get(authordet.read_a_task)
+ .put(authordet.read_a_task)
+
+
+ app.route('/sending')
+	.post(userData1.userSending)
+	.get(userData1.getAllSending)
 
 };
