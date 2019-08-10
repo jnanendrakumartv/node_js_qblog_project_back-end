@@ -221,18 +221,18 @@ exports.authorDetails = function(req,res){
   })  
 };
 
-// add comments
-// exports.bookcomments = function(req,res){
-//   console.log(req.body);
-//   var bookdetails = new authordet(req.body);
-//   bookdetails.save(function(err, data){
-//     if(err)
-//       res.send(err.message);
-//      res.send(data); 
-//      console.log(data); 
+//add comments
+exports.bookcomments = function(req,res){
+  console.log(req.body);
+  var bookdetails = new authordet(req.body);
+  bookdetails.save(function(err, data){
+    if(err)
+      res.send(err.message);
+     res.send(data); 
+     console.log(data); 
 
-//   })  
-// };
+  })  
+};
 
 // get all details
 exports.list_all_tasks = function(req, res) {
@@ -254,39 +254,4 @@ exports.list_all_tasks = function(req, res) {
 
 
 
-    // exports.authorDetails = function(req, res){
-    //   console.log('hi')
-    //   const reg_book=/^[A-Za-z0-9]{2,10}$/;
-    //   const reg_price=/^[A-Za-z0-9]{2,10}$/;
-    //   let reg_user=/^[A-Za-z]{2,10}$/;
-    //   if(!reg_price.test(req.body.password)){
-    //     res.send('password is invalid');
-    //   }
-      
-    //   if(reg_book.test(req.body.email)){
-    //     // console.log("hii");
-    //     authordet.find({book: req.body.book},function(err, data){
-    //       if(data != null && data != ''){
-    //         res.send('User already exists');
-    //       }
-    //       else
-    //       {
-    //         var authordet = new UserData(req.body);
-    //         bcrypt.genSalt(10, function(err, salt){
-    //           bcrypt.hash(authordet.price, salt, function(err, hash) {
-    //             authordet.password = hash;
-    //             authordet.save(function(err, data){
-    //               if(err)
-    //                 res.send(err.message);
-    //               res.json(data);
-    //             })
-    //           })
-    //         })
-    //       }
-    //     });
-    //   }
-    //   else {
-    //     res.send('Email is invalid');
-    //   }
-    // };
     

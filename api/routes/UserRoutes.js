@@ -26,6 +26,7 @@ module.exports = function(app) {
 // Insert author and books details
  app.route('/details')
  .post(authordet.authorDetails)
+ .post(authordet.bookcomments)
 
  // To get detail by using Id
  .get(authordet.list_all_tasks)
