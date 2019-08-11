@@ -27,6 +27,7 @@ var UserSchema1 =new Schema({
     price : { type: String},
     edition: { type: String},
     comments: { type:String}, 
+    build:{type:String},
 })
 module.exports = mongoose.model('details', UserSchema1);
 
