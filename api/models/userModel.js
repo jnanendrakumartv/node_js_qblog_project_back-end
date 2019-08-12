@@ -32,7 +32,7 @@ module.exports = mongoose.model('details', UserSchema1);
 
 
 var UserSchema2 =new Schema({
-  count:{type:String}
+  cnt:{type:String},
 })
 module.exports = mongoose.model('inc', UserSchema2);
 

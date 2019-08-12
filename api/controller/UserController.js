@@ -260,6 +260,7 @@ exports.list_all_tasks = function(req, res) {
         if(err)
           res.send(err.message);
          res.send(data); 
+         console.log(data);
         })
     }
 
