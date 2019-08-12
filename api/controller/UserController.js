@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
+incr=mongoose.model('inc');
 var bcrypt = require('bcryptjs');
 var jwt=require('jsonwebtoken');
 var nodemailer = require ('nodemailer');
@@ -252,6 +253,15 @@ exports.list_all_tasks = function(req, res) {
     });
     };
 
+    exports.increment = function(req,res){
+      var cnt = new incr(req.body);
+      console.log(req.body)
+      cnt.save(function(err, data){
+        if(err)
+          res.send(err.message);
+         res.send(data); 
+        })
+    }
 
 
     

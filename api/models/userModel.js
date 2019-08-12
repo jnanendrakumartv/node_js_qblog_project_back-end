@@ -27,8 +27,14 @@ var UserSchema1 =new Schema({
     price : { type: String},
     edition: { type: String},
     comments: { type:String}, 
-    
 })
 module.exports = mongoose.model('details', UserSchema1);
+
+
+var UserSchema2 =new Schema({
+  count:{type:String}
+})
+module.exports = mongoose.model('inc', UserSchema2);
+
 
 
