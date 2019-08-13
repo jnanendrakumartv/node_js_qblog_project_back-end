@@ -21,20 +21,31 @@ var UserSchema = new Schema({
 });
 module.exports = mongoose.model('UserInfo', UserSchema);
 
+
+
 var UserSchema1 =new Schema({
     authorname:{ type:String },
     bookname:{ type:String },
     price : { type: String},
     edition: { type: String},
-    comments: { type:String}, 
+    // comments: { type:String}, 
 })
 module.exports = mongoose.model('details', UserSchema1);
 
 
 var UserSchema2 =new Schema({
-  cnt:{type:String},
+  count: {
+    type:String,
+    default:1
+  }
 })
-module.exports = mongoose.model('inc', UserSchema2);
+module.exports = mongoose.model('like', UserSchema2);
 
 
+
+// var UserSchema3 = new Schema(
+//   {
+//     comments:{type:String},
+//   })
+//   module.exports = mongoose.model('write', UserSchema3);
 

@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
-incr=mongoose.model('inc');
+incr=mongoose.model('like');
+// comn=mongoose.model('write');
 var bcrypt = require('bcryptjs');
 var jwt=require('jsonwebtoken');
 var nodemailer = require ('nodemailer');
@@ -41,6 +42,7 @@ exports.userSignup = function(req, res){
         bcrypt.genSalt(10, function(err, salt){
           bcrypt.hash(userData.password, salt, function(err, hash) {
             userData.password = hash;
+            console.log(req.body,"signup")
             userData.save(function(err, data){
               if(err)
                 res.send(err.message);
@@ -255,14 +257,25 @@ exports.list_all_tasks = function(req, res) {
 
     exports.increment = function(req,res){
       var cnt = new incr(req.body);
-      console.log(req.body)
+      console.log(req.body,"jhgjh")
       cnt.save(function(err, data){
         if(err)
           res.send(err.message);
-         res.send(data); 
+         res.json(data); 
          console.log(data);
         })
     }
 
 
     
+
+    // exports.comme = function(req,res){
+    //   var comments = new comn(req.bo);
+    //   console.log(req, body)
+    //   comments.sve( function(err, data) {
+    //     if (err)
+    //     res.send(err.message);
+    //     res.send(data); 
+    //      console.log(data);
+    //   })
+    // }

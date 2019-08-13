@@ -2,6 +2,7 @@ module.exports = function(app) {
 	var userData = require('../controller/UserController');
 	var authordet=require('../controller/UserController');
 	var incr=require('../controller/UserController');
+	// var comn=require('../controller/UserController');
 	var isAuth = require('../Middleware/isAuth')
 
  // Signup 
@@ -35,8 +36,15 @@ module.exports = function(app) {
  .get(authordet.read_a_task)
 
  // To increment likes
- app.route('/inc')
+ app.route('/like')
  .post(incr.increment)
+
+
+
+ //comments
+//  app.route('/write')
+//  .post(comn.comme)
+
 
 
 // Comments 
