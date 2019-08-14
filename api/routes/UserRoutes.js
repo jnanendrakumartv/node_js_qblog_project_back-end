@@ -40,6 +40,11 @@ module.exports = function(app) {
  .post(incr.increment)
 
 
+//comments get
+.get(incr.list_all_tasks1)
+app.route('/like/:taskId1')
+.get(incr.read_a_task1)
+
 
  //comments
 //  app.route('/write')

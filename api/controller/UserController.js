@@ -266,16 +266,18 @@ exports.list_all_tasks = function(req, res) {
         })
     }
 
+    exports.list_all_tasks1 = function(req, res) {
+      incr.find({}, function(err, data) {
+      if (err)
+      res.send(err);
+      res.json(data);
+      });
+      };
 
-    
-
-    // exports.comme = function(req,res){
-    //   var comments = new comn(req.bo);
-    //   console.log(req, body)
-    //   comments.sve( function(err, data) {
-    //     if (err)
-    //     res.send(err.message);
-    //     res.send(data); 
-    //      console.log(data);
-    //   })
-    // }
+      exports.read_a_task1 = function(req, res) {
+        incr.findById(req.params.taskId1, function(err, task) {
+        if (err)
+        res.send(err);
+        res.json(task);
+        });
+        };
