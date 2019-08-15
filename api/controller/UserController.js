@@ -2,7 +2,6 @@ var mongoose = require('mongoose'),
 UserData = mongoose.model('UserInfo');
 authordet=mongoose.model('details');
 incr=mongoose.model('like');
-// comn=mongoose.model('write');
 var bcrypt = require('bcryptjs');
 var jwt=require('jsonwebtoken');
 var nodemailer = require ('nodemailer');
@@ -17,11 +16,8 @@ exports.getAllUsers = function(req, res) {
     if (err)
       res.send(err);
     res.json(details);
-    // console.log(data);
   });
 };
-
-
 exports.userSignup = function(req, res){
   console.log('hi')
   const reg_email=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
@@ -29,7 +25,6 @@ exports.userSignup = function(req, res){
   if(!reg_pwd.test(req.body.password)){
     res.send('password is invalid');
   }
-  
   if(reg_email.test(req.body.email)){
     // console.log("hii");
     UserData.find({email: req.body.email},function(err, data){
@@ -57,71 +52,6 @@ exports.userSignup = function(req, res){
     res.send('Email is invalid');
   }
 };
-
-// exports.userSignin = function(req,res){
-//   console.log('signin')
-//   UserData.find({email: req.body.email}, function(err, data){
-//     if(data != null && data != ''){
-//       // bcrypt.compare(req.body.password, data[0].password, function( err, isMatch) {
-//       //   if(isMatch == true){
-//           // res.json(data);
-//         UserData.find({password: req.body.password}, function(err, data){
-//           if(data != null && data != ''){
-//           res.send("User succesfully signIn");
-//           }
-//           else
-//           res.send("password incorrect");
-//         })
-//         // }
-//       // });
-//     } 
-//     else{
-//       // res.send(err);
-//       res.send("User does not exists");
-//     }
-//   });
-// };
-
-// exports.userSignin = (req,res,next) =>{
-//   const email = req.body.email;
-//   const password = req.body.password;
-//   let loadedUser;
-//   UserData.findOne({email: email})
-//   .then(user =>{
-//     if(!user){
-//       const error = new Error('A user with this email could not be found.');
-//       error.statusCode = 401;
-//       throw error;
-//     }
-//     loadedUser = user;
-//     return bcrypt.compare(password,user.password);
-//   })
-//   .then(isEqual =>{
-//     if(!isEqual){
-//       const error = new Error('wrong password.');
-//       error.statusCode = 401;
-//       throw error;
-//     }
-//     const token = jwt.sign(
-//     {
-//       email: loadedUser.email,
-//       userId:loadedUser._id.toString()
-//     },'secret',)
-//     res.status(200).json({token: token, userId: loadedUser._id.toString()})
-//     res.json({
-//       success: true,
-//       token: token
-//   });
-//   })
-//   .catch(err => {
-//     if (!err.statusCode) {
-//       err.statusCode = 500;
-//     }
-//     next(err);
-//   }); 
-// }
-
-
 exports.userSignin = (req,res,next) =>{
   const email = req.body.email;
   const password = req.body.password;
@@ -139,21 +69,8 @@ exports.userSignin = (req,res,next) =>{
         email: loadedUser.email,
         userId:loadedUser._id.toString()
       },'secret')
-      return res.status(200).json({token: token, userId: loadedUser._id.toString(), email: loadedUser.email})
-      // res.json({
-        // success: true,
-        // token: token
-    // });
-    // })
-    // return bcrypt.compare(password,user.password);
+      return res.status(200).json({token: token, userId: loadedUser._id.toString(), email: loadedUser.email})  
   })
-  // .then(isEqual =>{
-    // if(!isEqual){
-    //   const error = new Error('wrong password.');
-    //   error.statusCode = 401;
-    //   throw error;
-    // }
-
   .catch(err => {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -161,12 +78,6 @@ exports.userSignin = (req,res,next) =>{
     next(err);
   }); 
 }
-
-
-
-
-
-
 exports.getAllSignin = (isAuth,function(req, res) {
   UserData.find({userId:req.decodedToken}, function(err, data) {
     if (err)
@@ -174,8 +85,6 @@ exports.getAllSignin = (isAuth,function(req, res) {
     res.json(data); 
   });
 });
-
-
 exports.read_a_task1 = function(req, res) {
   UserData.findById(req.params.taskId, function(err, task) {
   if (err)
@@ -183,10 +92,6 @@ exports.read_a_task1 = function(req, res) {
   res.json(task);
   });
   };
-
-
-
-
 exports.updateUser = function(req, res) {
   UserData.findOneAndUpdate({_id: req.body.userId}, 
     req.body, {new: true}, function(err, data) {
@@ -195,10 +100,7 @@ exports.updateUser = function(req, res) {
       res.json(data);
     })
 }
-
-
 exports.getUser = function(req, res){
-
   console.log(req.params.emailId);    
   UserData.find({email: req.params.emailId},
     function(err, data){
@@ -208,9 +110,6 @@ exports.getUser = function(req, res){
       console.log(data);
     });
 };
-
-
-
 // add author and book details
 exports.authorDetails = function(req,res){
   console.log(req.body);
@@ -220,10 +119,8 @@ exports.authorDetails = function(req,res){
       res.send(err.message);
      res.send(data); 
      console.log(data); 
-
   })  
 };
-
 //add comments
 exports.bookcomments = function(req,res){
   console.log(req.body);
@@ -233,10 +130,8 @@ exports.bookcomments = function(req,res){
       res.send(err.message);
      res.send(data); 
      console.log(data); 
-
   })  
 };
-
 // get all details
 exports.list_all_tasks = function(req, res) {
   authordet.find({}, function(err, data) {
@@ -245,7 +140,6 @@ exports.list_all_tasks = function(req, res) {
   res.json(data);
   });
   };
-  
   // get details by using Id
   exports.read_a_task = function(req, res) {
     authordet.findById(req.params.taskId, function(err, task) {
@@ -254,10 +148,9 @@ exports.list_all_tasks = function(req, res) {
     res.json(task);
     });
     };
-
     exports.increment = function(req,res){
       var cnt = new incr(req.body);
-      console.log(req.body,"jhgjh")
+      console.log(req.body)
       cnt.save(function(err, data){
         if(err)
           res.send(err.message);
@@ -265,7 +158,6 @@ exports.list_all_tasks = function(req, res) {
          console.log(data);
         })
     }
-
     exports.list_all_tasks1 = function(req, res) {
       incr.find({}, function(err, data) {
       if (err)
@@ -273,7 +165,6 @@ exports.list_all_tasks = function(req, res) {
       res.json(data);
       });
       };
-
       exports.read_a_task1 = function(req, res) {
         incr.findById(req.params.taskId1, function(err, task) {
         if (err)
