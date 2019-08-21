@@ -32,7 +32,3 @@ app.listen(app.get('port'), function(){
 	console.log('Server started on port ' + app.get('port'));
 });
 
-require("@babel/register")({
-  presets: ["@babel/preset-env"]
-});
-  module.exports = require('./server.js')
